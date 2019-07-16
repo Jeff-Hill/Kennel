@@ -19,6 +19,7 @@ export default class NavBar extends Component {
                     <li className="nav-item">
                         <Link className="nav-link" to="/owners">Owners</Link>
                     </li>
+                    <input type="search" className="search-box" placeholder="Search"/>
                 </ul>
             </nav>
         )
