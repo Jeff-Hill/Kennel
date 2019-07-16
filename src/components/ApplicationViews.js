@@ -25,13 +25,13 @@ class ApplicationViews extends Component {
     componentDidMount() {
         const newState = {}
 
-        AnimalManager.getAll()
+        AnimalManager.getAll("animals")
             .then(animals => newState.animals = animals)
-        EmployeeManager.getAll()
+        EmployeeManager.getAll("employees")
             .then(employees => newState.employees = employees)
-        LocationManager.getAll()
+        LocationManager.getAll("locations")
             .then(locations => newState.locations = locations)
-        OwnerManager.getAll()
+        OwnerManager.getAll("owners")
             .then(owners => newState.owners = owners)
             .then(() => this.setState(newState))
     }
