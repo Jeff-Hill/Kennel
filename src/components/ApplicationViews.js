@@ -104,13 +104,13 @@ class ApplicationViews extends Component {
                         dischargeAnimal={ this.deleteAnimal } />
                 }} />
 
-                // Our shiny new route. We pass employees to the AnimalForm so a dropdown can be populated
                 <Route path="/animals/new" render={(props) => {
                     return <AnimalForm
-                        {...props}
-                       addAnimal={this.addAnimal}
+                    {...props}
+                    addAnimal={this.addAnimal}
+                    // Our shiny new route. We pass employees to the AnimalForm so a dropdown can be populated
                        employees={this.state.employees} />
-}} />
+                    }} />
                 <Route path="/employees" render={(props) => {
                     return <EmployeeList terminateEmployee={this.terminateEmployee} employees={this.state.employees} />
                 }} />
