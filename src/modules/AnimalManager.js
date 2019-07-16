@@ -1,28 +1,50 @@
 import APIManager from "./APIManager.js"
 
 
-export default Object.create(null, {
-  get:{
-      value: function(resource, id) {
+export default {
+  get(resource, id) {
         return APIManager.get(resource, id)
-  }},
+  },
 
-  getAll:{
-      value: function(resource) {
+  getAll(resource) {
         return APIManager.all(resource)
-  }},
+  },
 
-  post:{
-      value: function(resource) {
+  post(resource) {
         return APIManager.post(resource)
-  }},
+  },
 
-  removeAndList: {
-      value: function(resource, id) {
+  removeAndList(resource, id) {
         return APIManager.delete(resource, id)
 
 
-}}
+}
 
-})
+}
+
+
+// export default Object.create(null, {
+//     get:{
+//         value: function(resource, id) {
+//           return APIManager.get(resource, id)
+//     }},
+
+//     getAll:{
+//         value: function(resource) {
+//           return APIManager.all(resource)
+//     }},
+
+//     post:{
+//         value: function(resource) {
+//           return APIManager.post(resource)
+//     }},
+
+//     removeAndList: {
+//         value: function(resource, id) {
+//           return APIManager.delete(resource, id)
+
+
+//   }}
+
+//   })
 
