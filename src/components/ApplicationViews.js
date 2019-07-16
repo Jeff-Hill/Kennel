@@ -1,14 +1,15 @@
 import { Route } from 'react-router-dom'
 import React, { Component } from "react"
+import { withRouter } from 'react-router'
 import AnimalList from './animal/AnimalList'
 import LocationList from './location/LocationList'
 import EmployeeList from './employee/EmployeeList'
 import OwnerList from './owner/OwnerList'
 import AnimalManager from "../modules/AnimalManager"
+import AnimalDetail from './animal/AnimalDetail'
 
 
-
-export default class ApplicationViews extends Component {
+class ApplicationViews extends Component {
 
     state = {
         owners: [],
@@ -38,14 +39,13 @@ export default class ApplicationViews extends Component {
         return fetch(`http://localhost:5002/animals/${id}`, {
             method: "DELETE"
         })
-        .then(e => e.json())
-        .then(() => fetch(`http://localhost:5002/animals`))
-        .then(e => e.json())
-        .then(animals => this.setState({
-            animals: animals
+
+        .then(AnimalManager.getAll)
+        .then(animals => {
+            this.props.history.push("/animals")
+            this.setState({ animals: animals })
         })
-      )
-    }
+        }
 
     terminateEmployee = id => {
         return fetch(`http://localhost:5002/employees/${id}`, {
@@ -79,8 +79,23 @@ export default class ApplicationViews extends Component {
                 <Route exact path="/" render={(props) => {
                     return <LocationList locations={this.state.locations} />
                 }} />
-                <Route path="/animals" render={(props) => {
+                <Route exact path="/animals" render={(props) => {
                     return <AnimalList deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
+                }} />
+                <Route path="/animals/:animalId(\d+)" render={(props) => {
+                    // Find the animal with the id of the route parameter
+                    let animal = this.state.animals.find(animal =>
+                         animal.id === parseInt(props.match.params.animalId)
+                    )
+                    // If the animal wasn't found, create a default one
+                    if (!animal) {
+                        animal = {id:404, name:"404", breed: "Dog not found"}
+                    }
+
+                    return <AnimalDetail animal={ animal }
+                        dischargeAnimal={ this.deleteAnimal } />
+
+
                 }} />
                 <Route path="/employees" render={(props) => {
                     return <EmployeeList terminateEmployee={this.terminateEmployee} employees={this.state.employees} />
@@ -93,3 +108,4 @@ export default class ApplicationViews extends Component {
     }
 }
 
+export default withRouter(ApplicationViews)

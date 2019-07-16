@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import employee from "./employee.jpg"
+import employeeimage from "./employee.jpg"
 import "./Employee.css"
 
 
@@ -13,7 +13,7 @@ import "./Employee.css"
                         <div key={employee.id} className="card">
                             <div className="card-body">
                                 <div className="card-title">
-                                    <img src={employee} className="icon--employee" alt="employee-icon" />
+                                    <img src={employeeimage} className="icon--employee" alt="employee-icon" />
                                     <h5>{employee.name}</h5>
                                     <button onClick={() => this.props.terminateEmployee(employee.id)}
                                         className="card-link">Terminate</button>
