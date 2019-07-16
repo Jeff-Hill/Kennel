@@ -31,10 +31,6 @@
   ],
   "animals": [
     {
-      "id": 3,
-      "name": "Angus"
-    },
-    {
       "id": 4,
       "name": "Henley"
     },

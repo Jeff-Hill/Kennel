@@ -36,17 +36,25 @@ class ApplicationViews extends Component {
             .then(() => this.setState(newState))
     }
 
-    deleteAnimal = id => {
-        return fetch(`http://localhost:5002/animals/${id}`, {
-            method: "DELETE"
-        })
+    // deleteAnimal = id => {
+    //     return fetch(`http://localhost:5002/animals/${id}`, {
+    //         method: "DELETE"
+    //     })
 
-        .then(AnimalManager.getAll)
-        .then(animals => {
-            this.props.history.push("/animals")
-            this.setState({ animals: animals })
-        })
-        }
+    //     .then(AnimalManager.getAll)
+    //     .then(animals => {
+    //         this.props.history.push("/animals")
+    //         this.setState({ animals: animals })
+    //     })
+    //     }
+
+    deleteAnimal = (id) => {
+            return AnimalManager.removeAndList(id)
+            .then(AnimalManager.getAll)
+            .then(animals => { this.props.history.push("/animals")
+                this.setState({ animals: animals})
+            })
+          }
 
     addAnimal = (animal) =>
         AnimalManager.post(animal)

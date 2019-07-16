@@ -16,8 +16,15 @@ export default {
       },
       body: JSON.stringify(newAnimal)
     }).then(data => data.json())
-  }
+  },
+
+  removeAndList(id) {
+    return fetch(`${remoteURL}/animals/${id}`, {
+    method: "DELETE"
+    })
+
+
 }
 
-
+}
 
