@@ -13,8 +13,8 @@
       "name": "Blaise Roberts"
     },
     {
-        "id": 5,
-        "name": "Johnathan Winters"
+      "id": 5,
+      "name": "Johnathan Winters"
     }
   ],
   "locations": [
@@ -41,6 +41,18 @@
     {
       "id": 6,
       "name": "Checkers"
+    },
+    {
+      "name": "Leo",
+      "breed": "German Shepherd",
+      "employeeId": 2,
+      "id": 7
+    },
+    {
+      "name": "Clive",
+      "breed": "Golden Retriever",
+      "employeeId": 1,
+      "id": 8
     }
   ],
   "owners": [

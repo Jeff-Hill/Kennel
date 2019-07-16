@@ -7,7 +7,7 @@ import EmployeeList from './employee/EmployeeList'
 import OwnerList from './owner/OwnerList'
 import AnimalManager from "../modules/AnimalManager"
 import AnimalDetail from './animal/AnimalDetail'
-
+import AnimalForm from "./animal/AnimalForm"
 
 class ApplicationViews extends Component {
 
@@ -47,6 +47,15 @@ class ApplicationViews extends Component {
         })
         }
 
+    addAnimal = (animal) =>
+        AnimalManager.post(animal)
+            .then(() => AnimalManager.getAll())
+            .then(animals =>
+                this.setState({
+                    animals: animals
+      })
+    );
+
     terminateEmployee = id => {
         return fetch(`http://localhost:5002/employees/${id}`, {
            method: "DELETE"
@@ -80,7 +89,7 @@ class ApplicationViews extends Component {
                     return <LocationList locations={this.state.locations} />
                 }} />
                 <Route exact path="/animals" render={(props) => {
-                    return <AnimalList deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
+                    return <AnimalList {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
                 }} />
                 <Route path="/animals/:animalId(\d+)" render={(props) => {
                     // Find the animal with the id of the route parameter
@@ -91,12 +100,17 @@ class ApplicationViews extends Component {
                     if (!animal) {
                         animal = {id:404, name:"404", breed: "Dog not found"}
                     }
-
                     return <AnimalDetail animal={ animal }
                         dischargeAnimal={ this.deleteAnimal } />
-
-
                 }} />
+
+                // Our shiny new route. We pass employees to the AnimalForm so a dropdown can be populated
+                <Route path="/animals/new" render={(props) => {
+                    return <AnimalForm
+                        {...props}
+                       addAnimal={this.addAnimal}
+                       employees={this.state.employees} />
+}} />
                 <Route path="/employees" render={(props) => {
                     return <EmployeeList terminateEmployee={this.terminateEmployee} employees={this.state.employees} />
                 }} />
