@@ -62,14 +62,15 @@ class ApplicationViews extends Component {
             })
           }
 
-    addAnimal = (animal) =>
-        AnimalManager.post(animal)
-            .then(() => AnimalManager.getAll())
+    addAnimal = (animal) => {
+        return AnimalManager.post("animals", animal)
+            .then(() => AnimalManager.getAll("animals"))
             .then(animals =>
                 this.setState({
                     animals: animals
             })
         );
+    }
 
     terminateEmployee = (id) => {
         return EmployeeManager.removeAndList("employees", id)

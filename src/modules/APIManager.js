@@ -14,13 +14,13 @@ export default {
             return fetch(`${remoteURL}/${resource}`).then(e => e.json())
         },
 
-    post (resource) {
+    post (resource, resourceObj) {
             return fetch(`${remoteURL}/${resource}`, {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json"
                 },
-                body: JSON.stringify(resource)
+                body: JSON.stringify(resourceObj)
               }).then(data => data.json())
 
         },
