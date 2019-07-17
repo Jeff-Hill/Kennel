@@ -16,13 +16,13 @@ export default {
 
   removeAndList(resource, id) {
         return APIManager.delete(resource, id)
-
-
-}
+        .then( () => this.getAll(resource))
 
 }
 
+}
 
+// IF you want to use Object.create
 // export default Object.create(null, {
 //     get:{
 //         value: function(resource, id) {

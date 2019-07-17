@@ -31,14 +31,6 @@
   ],
   "animals": [
     {
-      "id": 4,
-      "name": "Henley"
-    },
-    {
-      "id": 6,
-      "name": "Checkers"
-    },
-    {
       "name": "Leo",
       "breed": "German Shepherd",
       "employeeId": 2,
