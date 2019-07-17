@@ -8,6 +8,16 @@ import "./Employee.css"
     export default class EmployeeList extends Component {
         render() {
             return (
+                <React.Fragment>
+                <div className="employeeButton">
+                    <button type="button"
+                            className="btn btn-success"
+                            onClick={() => {
+                                this.props.history.push("/employees/new")}
+                            }>
+                        Hire Employee
+                    </button>
+                </div>
                 <section className="employees">
                 {
                     this.props.employees.map(employee =>
@@ -25,6 +35,7 @@ import "./Employee.css"
                     )
                 }
                 </section>
+            </React.Fragment>
             )
         }
     }

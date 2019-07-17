@@ -11,6 +11,11 @@
     {
       "id": 5,
       "name": "Johnathan Winters"
+    },
+    {
+      "name": "Jeremy",
+      "position": "Front Desk",
+      "id": 6
     }
   ],
   "locations": [
@@ -49,23 +54,19 @@
       "breed": "Beagle",
       "employeeId": 4,
       "id": 11
+    },
+    {
+      "name": "Tucker",
+      "breed": "Aussie Shepherd",
+      "employeeId": 5,
+      "id": 12
     }
   ],
   "owners": [
     {
-      "id": 4,
-      "name": "Adam Oswalt",
-      "phoneNumber": "615-326-7529"
-    },
-    {
-      "id": 5,
-      "name": "Fletcher Bangs",
-      "phoneNumber": "615-231-6758"
-    },
-    {
-      "id": 6,
-      "name": "Angela Lee",
-      "phoneNumber": "615-956-9453"
+      "name": "Randell",
+      "phoneNumber": "615-359-8743",
+      "id": 3
     }
   ]
 }

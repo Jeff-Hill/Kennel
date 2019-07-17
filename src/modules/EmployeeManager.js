@@ -10,8 +10,8 @@ export default {
         return APIManager.all(resource)
       },
 
-    post(resource) {
-        return APIManager.post(resource)
+    post(resource, resourceObj) {
+        return APIManager.post(resource, resourceObj)
       },
 
     removeAndList(resource, id) {

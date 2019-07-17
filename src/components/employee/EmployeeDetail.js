@@ -17,7 +17,7 @@ export default class Employee extends Component {
                             <img src={ employeeimage } className="icon--employee" alt="employee-icon" />
                             { this.props.employee.name }
                         </h4>
-                        <h6 className="card-title">{ this.props.employee.person }</h6>
+                        <h6 className="card-title">{ this.props.employee.position }</h6>
                         <button onClick={
                                 () => {
                                     this.setState(
