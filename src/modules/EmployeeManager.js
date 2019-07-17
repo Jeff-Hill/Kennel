@@ -6,9 +6,19 @@ export default {
         return APIManager.get(resource, id)
       },
 
-      getAll(resource) {
+    getAll(resource) {
         return APIManager.all(resource)
-      }
+      },
+
+    post(resource) {
+        return APIManager.post(resource)
+      },
+
+    removeAndList(resource, id) {
+        return APIManager.delete(resource, id)
+        .then( () => this.getAll(resource))
+
+}
 
 
 }

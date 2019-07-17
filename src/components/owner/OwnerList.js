@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from "react-router-dom";
 import ownerimage from "./ownerimage.jpg"
 import "./Owner.css"
 
@@ -15,6 +16,7 @@ export default class OwnerList extends Component {
                                     <img src={ownerimage} className="icon--owner" alt="owner-icon" />
                                         <h5>{owner.name}</h5>
                                         <h6>{owner.phoneNumber}</h6>
+                                        <Link className="nav-link" to={`/owners/${owner.id}`}>Details</Link>
                                         <button onClick={() => this.props.removeOwner(owner.id)}
                                         className="card-link">Remove</button>
                                 </div>

@@ -12,6 +12,8 @@ import OwnerManager from "../modules/OwnerManager"
 import Login from './authentication/Login'
 
 import AnimalDetail from './animal/AnimalDetail'
+import EmployeeDetail from './employee/EmployeeDetail'
+import OwnerDetail from './owner/OwnerDetail'
 import AnimalForm from "./animal/AnimalForm"
 
 class ApplicationViews extends Component {
@@ -56,7 +58,7 @@ class ApplicationViews extends Component {
             return AnimalManager.removeAndList("animals", id)
             // .then(AnimalManager.getAll)
             .then(animals => { this.props.history.push("/animals")
-                this.setState({ animals: animals})
+                this.setState({ animals: animals })
             })
           }
 
@@ -66,34 +68,22 @@ class ApplicationViews extends Component {
             .then(animals =>
                 this.setState({
                     animals: animals
-      })
-    );
+            })
+        );
 
-    terminateEmployee = id => {
-        return fetch(`http://localhost:5002/employees/${id}`, {
-           method: "DELETE"
+    terminateEmployee = (id) => {
+        return EmployeeManager.removeAndList("employees", id)
+        .then(employees => { this.props.history.push("/employees")
+            this.setState({ employees: employees })
         })
-        .then(employeeData => employeeData.json())
-        .then(() => fetch(`http://localhost:5002/employees`))
-        .then(employeeArr => employeeArr.json())
-        .then(employees => this.setState({
-            employees: employees
-        })
-        )
-    }
+      }
 
     removeOwner = id => {
-        return fetch(`http://localhost:5002/owners/${id}`, {
-            method: "DELETE"
+        return OwnerManager.removeAndList("owners", id)
+        .then(owners => { this.props.history.push("/owners")
+            this.setState({ owners: owners })
         })
-        .then(ownerData => ownerData.json())
-        .then(() => fetch(`http://localhost:5002/owners`))
-        .then(ownerArr => ownerArr.json())
-        .then(owners => this.setState({
-            owners: owners
-        })
-        )
-    }
+      }
 
     render() {
         return (
@@ -132,8 +122,34 @@ class ApplicationViews extends Component {
                         return <Redirect to="/login" />
                         }
                     }} />
-                <Route path="/owners" render={(props) => {
+                <Route path="/employees/:employeeId(\d+)" render={(props) => {
+                // Find the employee with the id of the route parameter
+                    let employee = this.state.employees.find(employee =>
+                        employee.id === parseInt(props.match.params.employeeId)
+                        )
+                // If the animal wasn't found, create a default one
+                    if (!employee) {
+                        employee = {id:404, name:"404", person: "Person not found"}
+                    }
+
+                return <EmployeeDetail employee={ employee }
+                    dischargeEmployee={ this.terminateEmployee } />
+                }} />
+                <Route exact path="/owners" render={(props) => {
                     return <OwnerList removeOwner={this.removeOwner} owners={this.state.owners} />
+                }} />
+                <Route path="/owners/:ownerId(\d+)" render={(props) => {
+                // Find the animal with the id of the route parameter
+                    let owner = this.state.owners.find(owner =>
+                     owner.id === parseInt(props.match.params.ownerId)
+                     )
+                // If the animal wasn't found, create a default one
+                    if (!owner) {
+                        owner = {id:404, name:"404", person: "Person not found"}
+                    }
+
+                return <OwnerDetail owner={ owner }
+                    dischargeOwner={ this.removeOwner } />
                 }} />
                 <Route path="/login" component={Login} />
             </React.Fragment>
