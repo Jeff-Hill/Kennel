@@ -1,10 +1,6 @@
 {
   "employees": [
     {
-      "id": 1,
-      "name": "Jessica Younker"
-    },
-    {
       "id": 2,
       "name": "Jordan Nelson"
     },
@@ -37,23 +33,19 @@
       "id": 7
     },
     {
-      "name": "Clive",
-      "breed": "Golden Retriever",
-      "employeeId": 1,
-      "id": 8
+      "name": "Roger",
+      "breed": "Pug",
+      "employeeId": 4,
+      "id": 9
+    },
+    {
+      "name": "Hank",
+      "breed": "Lab",
+      "employeeId": 2,
+      "id": 10
     }
   ],
   "owners": [
-    {
-      "id": 1,
-      "name": "Ryan Tanay",
-      "phoneNumber": "615-234-3457"
-    },
-    {
-      "id": 2,
-      "name": "Emma Beaton",
-      "phoneNumber": "615-654-7890"
-    },
     {
       "id": 4,
       "name": "Adam Oswalt",
