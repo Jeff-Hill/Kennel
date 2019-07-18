@@ -17,6 +17,7 @@ import OwnerDetail from './owner/OwnerDetail'
 import AnimalForm from "./animal/AnimalForm"
 import EmployeeForm from "./employee/EmployeeForm"
 import OwnerForm from "./owner/OwnerForm"
+import AnimalEditForm from "./animal/AnimalEditForm"
 
 class ApplicationViews extends Component {
 
@@ -101,6 +102,16 @@ class ApplicationViews extends Component {
             .then(owners => this.setState({ owners: owners}))
     }
 
+    updateAnimal = (editedAnimalObject) => {
+        return AnimalManager.put("animals", editedAnimalObject)
+        .then(() => AnimalManager.getAll("animals"))
+        .then(animals => {
+          this.setState({
+            animals: animals
+          })
+        });
+      };
+
 
     render() {
         return (
@@ -111,7 +122,7 @@ class ApplicationViews extends Component {
                 <Route exact path="/animals" render={(props) => {
                     return <AnimalList {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
                 }} />
-                <Route path="/animals/:animalId(\d+)" render={(props) => {
+                <Route exact path="/animals/:animalId(\d+)" render={(props) => {
                     // Find the animal with the id of the route parameter
                     let animal = this.state.animals.find(animal =>
                          animal.id === parseInt(props.match.params.animalId)
@@ -121,8 +132,11 @@ class ApplicationViews extends Component {
                         animal = {id:404, name:"404", breed: "Dog not found"}
                     }
                     return <AnimalDetail animal={ animal }
-                        dischargeAnimal={ this.deleteAnimal } />
+                        deleteAnimal={ this.deleteAnimal } />
                 }} />
+                <Route path="/animals/:animalId(\d+)/edit" render={props => {
+                    return <AnimalEditForm {...props} employees={this.state.employees} updateAnimal={this.updateAnimal}/>
+                }}/>
 
                 <Route path="/animals/new" render={(props) => {
                     return <AnimalForm
@@ -133,8 +147,8 @@ class ApplicationViews extends Component {
                     }} />
                 <Route exact path="/employees" render={props => {
                     if (this.isAuthenticated()) {
-                        return <EmployeeList {...props} deleteEmployee={this.deleteEmployee}
-                             employees={this.state.employees} />
+                        return <EmployeeList {...props} deleteEmployee={this.terminateEmployee}
+                             employees={this.state.employees} animals={this.state.animals} deleteAnimal={this.deleteAnimal} />
                     } else {
                         return <Redirect to="/login" />
                         }

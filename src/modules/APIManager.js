@@ -29,7 +29,18 @@ export default {
             return fetch(`${remoteURL}/${resource}/${id}`, {
                 method: "DELETE"
                 })
-        }
+        },
+
+    put(resource, editedAnimal) {
+            return fetch(`${remoteURL}/${resource}/${editedAnimal.id}`, {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(editedAnimal)
+            }).then(data => data.json());
+          }
+
 
 
 

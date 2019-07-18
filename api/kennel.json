@@ -32,34 +32,28 @@
   ],
   "animals": [
     {
-      "name": "Leo",
-      "breed": "German Shepherd",
-      "employeeId": 2,
-      "id": 7
-    },
-    {
-      "name": "Roger",
-      "breed": "Pug",
-      "employeeId": 4,
-      "id": 9
-    },
-    {
-      "name": "Hank",
-      "breed": "Lab",
-      "employeeId": 2,
-      "id": 10
-    },
-    {
-      "name": "Bucky",
-      "breed": "Beagle",
-      "employeeId": 4,
-      "id": 11
-    },
-    {
       "name": "Tucker",
       "breed": "Aussie Shepherd",
       "employeeId": 5,
       "id": 12
+    },
+    {
+      "name": "Pickles",
+      "breed": "Borkie",
+      "employeeId": 2,
+      "id": 13
+    },
+    {
+      "id": 14,
+      "name": "dgfsgf",
+      "breed": "dgs",
+      "employeeId": 2
+    },
+    {
+      "name": "Molly",
+      "breed": "Collie",
+      "employeeId": 5,
+      "id": 15
     }
   ],
   "owners": [
@@ -67,6 +61,11 @@
       "name": "Randell",
       "phoneNumber": "615-359-8743",
       "id": 3
+    },
+    {
+      "name": "Jabba the Hut",
+      "phoneNumber": "615-954-3940",
+      "id": 4
     }
   ]
 }

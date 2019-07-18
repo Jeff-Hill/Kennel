@@ -22,12 +22,12 @@ export default class Animal extends Component {
                                 () => {
                                     this.setState(
                                         { saveDisabled: true },
-                                        () => this.props.dischargeAnimal(this.props.animal.id)
+                                        () => this.props.deleteAnimal(this.props.animal.id)
                                     )
                                 }
                             }
                             disabled={ this.state.saveDisabled }
-                            className="card-link">Delete</button>
+                            className="card-link">Discharge</button>
                     </div>
                 </div>
             </section>
