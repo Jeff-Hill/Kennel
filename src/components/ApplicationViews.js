@@ -118,7 +118,7 @@ class ApplicationViews extends Component {
             <React.Fragment>
                 <Route exact path="/" render={(props) => {
                     if (this.isAuthenticated()) {
-                    return <LocationList locations={this.state.locations} />
+                    return <LocationList locations={this.state.locations} employees={this.state.employees} animals={this.state.animals} />
                 } else {
                     return <Redirect to="/login" />
                     }

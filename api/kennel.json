@@ -2,25 +2,30 @@
   "employees": [
     {
       "id": 2,
-      "name": "Jordan Nelson"
+      "name": "Jordan Nelson",
+      "locationId": 1
     },
     {
       "id": 4,
-      "name": "Blaise Roberts"
+      "name": "Blaise Roberts",
+      "locationId": 2
     },
     {
       "id": 5,
-      "name": "Johnathan Winters"
+      "name": "Johnathan Winters",
+      "locationId": 1
     },
     {
       "name": "Jeremy",
       "position": "Front Desk",
-      "id": 6
+      "id": 6,
+      "locationId": 2
     },
     {
       "name": "William",
       "position": "Dog Walker",
-      "id": 7
+      "id": 7,
+      "locationId": 1
     }
   ],
   "locations": [
@@ -28,11 +33,13 @@
       "id": 1,
       "name": "Nashville North",
       "address": "500 Circle Way"
+
     },
     {
       "id": 2,
       "name": "Nashville South",
       "address": "10101 Binary Court"
+
     }
   ],
   "animals": [
