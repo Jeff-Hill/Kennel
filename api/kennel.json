@@ -16,6 +16,11 @@
       "name": "Jeremy",
       "position": "Front Desk",
       "id": 6
+    },
+    {
+      "name": "William",
+      "position": "Dog Walker",
+      "id": 7
     }
   ],
   "locations": [
@@ -66,6 +71,11 @@
       "name": "Jabba the Hut",
       "phoneNumber": "615-954-3940",
       "id": 4
+    },
+    {
+      "name": "Jack Langston",
+      "phoneNumber": "615-697-4042",
+      "id": 5
     }
   ]
 }
