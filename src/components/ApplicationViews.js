@@ -117,11 +117,21 @@ class ApplicationViews extends Component {
         return (
             <React.Fragment>
                 <Route exact path="/" render={(props) => {
+                    if (this.isAuthenticated()) {
                     return <LocationList locations={this.state.locations} />
+                } else {
+                    return <Redirect to="/login" />
+                    }
                 }} />
+
                 <Route exact path="/animals" render={(props) => {
+                    if (this.isAuthenticated()) {
                     return <AnimalList {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
-                }} />
+                } else {
+                    return <Redirect to="/login" />
+                    }
+                }}/>
+
                 <Route exact path="/animals/:animalId(\d+)" render={(props) => {
                     // Find the animal with the id of the route parameter
                     let animal = this.state.animals.find(animal =>
@@ -174,8 +184,13 @@ class ApplicationViews extends Component {
                 }} />
 
                 <Route exact path="/owners" render={(props) => {
+                    if (this.isAuthenticated()) {
                     return <OwnerList {...props} removeOwner={this.removeOwner} owners={this.state.owners} />
+                } else {
+                    return <Redirect to="/login" />
+                    }
                 }} />
+
                 <Route path="/owners/:ownerId(\d+)" render={(props) => {
                 // Find the animal with the id of the route parameter
                     let owner = this.state.owners.find(owner =>
