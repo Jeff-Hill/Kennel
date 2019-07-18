@@ -28,3 +28,9 @@
     font-size: 0.75em;
 }
 
+.employeeButton {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 0 10px 0;
+  }
+

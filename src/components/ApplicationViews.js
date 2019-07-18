@@ -15,6 +15,9 @@ import AnimalDetail from './animal/AnimalDetail'
 import EmployeeDetail from './employee/EmployeeDetail'
 import OwnerDetail from './owner/OwnerDetail'
 import AnimalForm from "./animal/AnimalForm"
+import EmployeeForm from "./employee/EmployeeForm"
+import OwnerForm from "./owner/OwnerForm"
+import AnimalEditForm from "./animal/AnimalEditForm"
 
 class ApplicationViews extends Component {
 
@@ -62,6 +65,20 @@ class ApplicationViews extends Component {
             })
           }
 
+    terminateEmployee = (id) => {
+              return EmployeeManager.removeAndList("employees", id)
+              .then(employees => { this.props.history.push("/employees")
+                  this.setState({ employees: employees })
+              })
+            }
+
+    removeOwner = (id) => {
+              return OwnerManager.removeAndList("owners", id)
+              .then(owners => { this.props.history.push("/owners")
+                  this.setState({ owners: owners })
+              })
+            }
+
     addAnimal = (animal) => {
         return AnimalManager.post("animals", animal)
             .then(() => AnimalManager.getAll("animals"))
@@ -72,19 +89,29 @@ class ApplicationViews extends Component {
         );
     }
 
-    terminateEmployee = (id) => {
-        return EmployeeManager.removeAndList("employees", id)
-        .then(employees => { this.props.history.push("/employees")
-            this.setState({ employees: employees })
-        })
-      }
+    addEmployee = (employee) => {
+        return EmployeeManager.post("employees", employee)
+            .then( () => EmployeeManager.getAll("employees"))
+            .then(employees => this.setState({ employees: employees})
+        )
+    }
 
-    removeOwner = id => {
-        return OwnerManager.removeAndList("owners", id)
-        .then(owners => { this.props.history.push("/owners")
-            this.setState({ owners: owners })
-        })
-      }
+    addOwner = (owner) => {
+        return OwnerManager.post("owners", owner)
+            .then( () => OwnerManager.getAll("owners"))
+            .then(owners => this.setState({ owners: owners}))
+    }
+
+    updateAnimal = (editedAnimalObject) => {
+        return AnimalManager.put("animals", editedAnimalObject)
+        .then(() => AnimalManager.getAll("animals"))
+        .then(animals => {
+          this.setState({
+            animals: animals
+          })
+        });
+      };
+
 
     render() {
         return (
@@ -95,7 +122,7 @@ class ApplicationViews extends Component {
                 <Route exact path="/animals" render={(props) => {
                     return <AnimalList {...props} deleteAnimal={this.deleteAnimal} animals={this.state.animals} />
                 }} />
-                <Route path="/animals/:animalId(\d+)" render={(props) => {
+                <Route exact path="/animals/:animalId(\d+)" render={(props) => {
                     // Find the animal with the id of the route parameter
                     let animal = this.state.animals.find(animal =>
                          animal.id === parseInt(props.match.params.animalId)
@@ -105,8 +132,11 @@ class ApplicationViews extends Component {
                         animal = {id:404, name:"404", breed: "Dog not found"}
                     }
                     return <AnimalDetail animal={ animal }
-                        dischargeAnimal={ this.deleteAnimal } />
+                        deleteAnimal={ this.deleteAnimal } />
                 }} />
+                <Route path="/animals/:animalId(\d+)/edit" render={props => {
+                    return <AnimalEditForm {...props} employees={this.state.employees} updateAnimal={this.updateAnimal}/>
+                }}/>
 
                 <Route path="/animals/new" render={(props) => {
                     return <AnimalForm
@@ -117,8 +147,8 @@ class ApplicationViews extends Component {
                     }} />
                 <Route exact path="/employees" render={props => {
                     if (this.isAuthenticated()) {
-                        return <EmployeeList deleteEmployee={this.deleteEmployee}
-                             employees={this.state.employees} />
+                        return <EmployeeList {...props} deleteEmployee={this.terminateEmployee}
+                             employees={this.state.employees} animals={this.state.animals} deleteAnimal={this.deleteAnimal} />
                     } else {
                         return <Redirect to="/login" />
                         }
@@ -133,11 +163,18 @@ class ApplicationViews extends Component {
                         employee = {id:404, name:"404", person: "Person not found"}
                     }
 
-                return <EmployeeDetail employee={ employee }
+                    return <EmployeeDetail employee={ employee }
                     dischargeEmployee={ this.terminateEmployee } />
                 }} />
+
+                <Route path="/employees/new" render={(props) => {
+                    return <EmployeeForm {...props}
+                       addEmployee={this.addEmployee}
+                       animals={this.state.animals} />
+                }} />
+
                 <Route exact path="/owners" render={(props) => {
-                    return <OwnerList removeOwner={this.removeOwner} owners={this.state.owners} />
+                    return <OwnerList {...props} removeOwner={this.removeOwner} owners={this.state.owners} />
                 }} />
                 <Route path="/owners/:ownerId(\d+)" render={(props) => {
                 // Find the animal with the id of the route parameter
@@ -152,6 +189,13 @@ class ApplicationViews extends Component {
                 return <OwnerDetail owner={ owner }
                     dischargeOwner={ this.removeOwner } />
                 }} />
+
+                <Route path="/owners/new" render={(props) => {
+                    return <OwnerForm {...props}
+                       addOwner={this.addOwner}
+                       animals={this.state.animals} />
+                }} />
+
                 <Route path="/login" component={Login} />
             </React.Fragment>
         )

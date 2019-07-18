@@ -11,6 +11,11 @@
     {
       "id": 5,
       "name": "Johnathan Winters"
+    },
+    {
+      "name": "Jeremy",
+      "position": "Front Desk",
+      "id": 6
     }
   ],
   "locations": [
@@ -27,45 +32,40 @@
   ],
   "animals": [
     {
-      "name": "Leo",
-      "breed": "German Shepherd",
+      "name": "Tucker",
+      "breed": "Aussie Shepherd",
+      "employeeId": 5,
+      "id": 12
+    },
+    {
+      "name": "Pickles",
+      "breed": "Borkie",
       "employeeId": 2,
-      "id": 7
+      "id": 13
     },
     {
-      "name": "Roger",
-      "breed": "Pug",
-      "employeeId": 4,
-      "id": 9
+      "id": 14,
+      "name": "dgfsgf",
+      "breed": "dgs",
+      "employeeId": 2
     },
     {
-      "name": "Hank",
-      "breed": "Lab",
-      "employeeId": 2,
-      "id": 10
-    },
-    {
-      "name": "Bucky",
-      "breed": "Beagle",
-      "employeeId": 4,
-      "id": 11
+      "name": "Molly",
+      "breed": "Collie",
+      "employeeId": 5,
+      "id": 15
     }
   ],
   "owners": [
     {
-      "id": 4,
-      "name": "Adam Oswalt",
-      "phoneNumber": "615-326-7529"
+      "name": "Randell",
+      "phoneNumber": "615-359-8743",
+      "id": 3
     },
     {
-      "id": 5,
-      "name": "Fletcher Bangs",
-      "phoneNumber": "615-231-6758"
-    },
-    {
-      "id": 6,
-      "name": "Angela Lee",
-      "phoneNumber": "615-956-9453"
+      "name": "Jabba the Hut",
+      "phoneNumber": "615-954-3940",
+      "id": 4
     }
   ]
 }

@@ -28,3 +28,8 @@
     font-size: 0.75em;
 }
 
+.ownerButton {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 0 10px 0;
+  }
