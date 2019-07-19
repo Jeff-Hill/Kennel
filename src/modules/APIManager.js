@@ -31,13 +31,13 @@ export default {
                 })
         },
 
-    put(resource, editedAnimal) {
-            return fetch(`${remoteURL}/${resource}/${editedAnimal.id}`, {
+    put(resource, editedObj) {
+            return fetch(`${remoteURL}/${resource}/${editedObj.id}`, {
               method: "PUT",
               headers: {
                 "Content-Type": "application/json"
               },
-              body: JSON.stringify(editedAnimal)
+              body: JSON.stringify(editedObj)
             }).then(data => data.json());
           }
 

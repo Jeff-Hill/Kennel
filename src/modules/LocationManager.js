@@ -7,16 +7,20 @@ export default {
         return APIManager.get(resource, id)
       },
 
-      getAll(resource) {
+    getAll(resource) {
         return APIManager.all(resource)
       },
 
-      post(resource) {
+    post(resource) {
         return APIManager.post(resource)
     },
 
     removeAndList(resource, id) {
         return APIManager.delete(resource, id)
-  }
+    },
+
+    put(resource, resourceObjId) {
+      return APIManager.put(resource, resourceObjId)
+    }
 
 }

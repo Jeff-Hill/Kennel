@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import "./Employee.css";
+import "./Location.css";
 
-export default class EmployeeForm extends Component {
+export default class LocationForm extends Component {
   // Set initial state
   state = {
-    employeeName: "",
-    position: "",
-    // animalId: ""
+    locationName: "",
+    address: "",
+    // employeeId: ""
   };
 
   // Update state whenever an input field is edited
@@ -20,73 +20,73 @@ export default class EmployeeForm extends Component {
         Local method for validation, creating animal object, and
         invoking the function reference passed from parent component
      */
-  constructNewEmployee = evt => {
+  constructNewLocation = evt => {
     evt.preventDefault();
-    // if (this.state.animal === "") {
-    //   window.alert("Please select an animal");
+    // if (this.state.employee === "") {
+    //   window.alert("Please select a caretaker");
     // } else {
-      const employee = {
-        name: this.state.employeeName,
-        position: this.state.position,
+      const location = {
+        name: this.state.locationName,
+        address: this.state.address,
         // Make sure the employeeId is saved to the database as a number since it is a foreign key.
-        // animalId: parseInt(this.state.animalId)
+        // employeeId: parseInt(this.state.employeeId)
       };
 
       // Create the animal and redirect user to animal list
       this.props
-        .addEmployee(employee)
-        .then(() => this.props.history.push("/employees"));
-    }
-
+        .addLocation(location)
+        .then(() => this.props.history.push("/locations"));
+    // }
+  };
 
   render() {
     return (
       <React.Fragment>
-        <form className="employeeForm">
+        <form className="locationForm">
           <div className="form-group">
-            <label htmlFor="employeeName">Employee Name</label>
+            <label htmlFor="locationName">Location Name</label>
             <input
               type="text"
               required
               className="form-control"
               onChange={this.handleFieldChange}
-              id="employeeName"
-              placeholder="Employee Name"
+              id="locationName"
+              placeholder="Location Name"
             />
           </div>
           <div className="form-group">
-            <label htmlFor="position">Position</label>
+            <label htmlFor="address">address</label>
             <input
               type="text"
               required
               className="form-control"
               onChange={this.handleFieldChange}
-              id="position"
-              placeholder="Position"
+              id="address"
+              placeholder="address"
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="location">Assign to Location</label>
+          {/* <div className="form-group">
+            <label htmlFor="employee">Assign to caretaker</label>
             <select
               defaultValue=""
-              name="location"
-              id="locationId"
+              name="employee"
+              id="employeeId"
               onChange={this.handleFieldChange}
             >
-              <option value="">Select a Location</option>
-              {this.props.locations.map(e => (
+              <option value="">Select an employee</option>
+              {this.props.employees.map(e => (
                 <option key={e.id} id={e.id} value={e.id}>
                   {e.name}
                 </option>
               ))}
             </select>
-          </div>
+          </div> */}
           <button
             type="submit"
-            onClick={this.constructNewEmployee}
+            onClick={this.constructNewLocation}
             className="btn btn-primary"
           >
-            Hire Employee
+            Submit
           </button>
         </form>
       </React.Fragment>
