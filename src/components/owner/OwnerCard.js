@@ -21,7 +21,7 @@ export default class OwnerCard extends Component {
                                      Edit
                         </button>
                         <button
-                            onClick={() => this.props.deleteOwner(this.props.owner.id)}
+                            onClick={() => this.props.dischargeOwner(this.props.owner.id)}
                             className="card-link">Discharge</button>
                     </div>
                 </div>

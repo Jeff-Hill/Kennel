@@ -1,12 +1,6 @@
 {
   "employees": [
     {
-      "name": "William",
-      "position": "Dog Walker",
-      "id": 8,
-      "locationId": 1
-    },
-    {
       "id": 10,
       "name": "Julianna",
       "position": "Dog Walker",
@@ -55,8 +49,13 @@
     },
     {
       "id": 7,
-      "name": "Nashville 5",
-      "address": "123 west "
+      "name": "Nashville West",
+      "address": "123 West St."
+    },
+    {
+      "name": "Nashville East",
+      "address": "456 East Blvd",
+      "id": 8
     }
   ],
   "animals": [
@@ -65,18 +64,31 @@
       "breed": "Basset",
       "employeeId": 11,
       "id": 2
+    },
+    {
+      "id": 3,
+      "name": "Leo",
+      "breed": "German Retriever",
+      "employeeId": 11
+    },
+    {
+      "name": "Casey",
+      "breed": "Labrador",
+      "employeeId": 13,
+      "id": 4
+    },
+    {
+      "name": "Tucker",
+      "breed": "Beagle",
+      "employeeId": 12,
+      "id": 5
     }
   ],
   "owners": [
     {
-      "name": "Randell",
-      "phoneNumber": "615-359-8743",
-      "id": 3
-    },
-    {
-      "name": "Jabba the Hut",
-      "phoneNumber": "615-954-3940",
-      "id": 4
+      "id": 4,
+      "name": "Jabba the Hungry",
+      "phoneNumber": "615-954-3940"
     },
     {
       "name": "Jack Langston",
@@ -87,6 +99,11 @@
       "id": 6,
       "name": "Wallace Langston",
       "phoneNumber": "615-376-9403"
+    },
+    {
+      "id": 7,
+      "name": "Patty Smith",
+      "phoneNumber": "615-587-5241"
     }
   ]
 }

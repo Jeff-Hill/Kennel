@@ -255,7 +255,7 @@ class ApplicationViews extends Component {
 
                 <Route exact path="/owners" render={(props) => {
                     if (this.isAuthenticated()) {
-                    return <OwnerList {...props} removeOwner={this.removeOwner} owners={this.state.owners} />
+                    return <OwnerList {...props} dischargeOwner={this.removeOwner} owners={this.state.owners} />
                 } else {
                     return <Redirect to="/login" />
                     }
