@@ -30,7 +30,7 @@ export default class LocationEditForm extends Component {
         };
 
     this.props.updateLocation(editedLocation)
-    .then(() => this.props.history.push("/locations"))
+    .then(() => this.props.history.push("/"))
     // }
   }
 

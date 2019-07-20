@@ -25,6 +25,7 @@ export default class LocationForm extends Component {
     // if (this.state.employee === "") {
     //   window.alert("Please select a caretaker");
     // } else {
+
       const location = {
         name: this.state.locationName,
         address: this.state.address,
@@ -32,10 +33,11 @@ export default class LocationForm extends Component {
         // employeeId: parseInt(this.state.employeeId)
       };
 
+      console.log(location)
       // Create the animal and redirect user to animal list
       this.props
         .addLocation(location)
-        .then(() => this.props.history.push("/locations"));
+        .then(() => this.props.history.push("/"));
     // }
   };
 

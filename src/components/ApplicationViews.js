@@ -75,7 +75,7 @@ class ApplicationViews extends Component {
 
     removeLocation = (id) => {
               return LocationManager.removeAndList("locations", id)
-              .then(locations => { this.props.history.push("/locations")
+              .then(locations => { this.props.history.push("/")
                   this.setState({ locations: locations })
               })
             }
@@ -155,7 +155,7 @@ class ApplicationViews extends Component {
             <React.Fragment>
                 <Route exact path="/" render={(props) => {
                     if (this.isAuthenticated()) {
-                    return <LocationList locations={this.state.locations} employees={this.state.employees}
+                    return <LocationList  {...props} locations={this.state.locations} deleteLocation={this.removeLocation} employees={this.state.employees}
                     animals={this.state.animals} updateAnimal={this.updateAnimal} deleteEmployee={this.terminateEmployee} />
                 } else {
                     return <Redirect to="/login" />

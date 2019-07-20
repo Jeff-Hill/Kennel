@@ -11,12 +11,13 @@ export default {
         return APIManager.all(resource)
       },
 
-    post(resource) {
-        return APIManager.post(resource)
+    post(resource, locationObj) {
+        return APIManager.post(resource, locationObj)
     },
 
     removeAndList(resource, id) {
         return APIManager.delete(resource, id)
+        .then( () => this.getAll(resource))
     },
 
     put(resource, resourceObjId) {

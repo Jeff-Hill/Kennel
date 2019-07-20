@@ -16,7 +16,7 @@ export default class LocationList extends Component {
                 <section className="locations">
                 {
                     this.props.locations.map(location =>
-                        <LocationCard key={location.id} location={location} {...this.props} />
+                        <LocationCard {...this.props} key={location.id} location={location}  />
                     )
                 }
                 </section>
